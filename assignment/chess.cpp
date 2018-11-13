@@ -37,7 +37,11 @@
  }
  void init_chess_board (ChessBoard chess_board)
  {
-   chess_board = {0};
+   for (int x = 0; x < 8; x++) {
+    for (int y = 0; y < 8; y++) {
+      chess_board[x][y].is_occupied = false;
+    }
+   }
  }
  struct ChessSquare * get_square (ChessBoard chess_board, File file, Rank rank)
  {
@@ -52,16 +56,16 @@
  }
  bool add_piece (ChessBoard chess_board, File file, Rank rank, struct ChessPiece piece)
   {
-    if (chess_board[file - 1][rank - 1].is_occupied == false && is_square_ok(file, rank) == true) {
-      chess_board[file-1][rank-1].is_occupied = true;
-      chess_board[file-1][rank-1].piece = piece;
+    if (chess_board[rank- 1][file-'a'].is_occupied == false && is_square_ok(file, rank) == true) {
+      chess_board[rank- 1][file-'a'].is_occupied = true;
+      chess_board[rank- 1][file-'a'].piece = piece;
       return true;
     }
     return false;
   }
  struct ChessPiece get_piece (ChessBoard chess_board, File file, Rank rank)
  {
-   return chess_board[file - 1][rank -1].piece;
+   return chess_board[rank- 1][file-'a'].piece;
  }
  void setup_chess_board (ChessBoard chess_board)
  {
@@ -75,7 +79,7 @@
  bool remove_piece (ChessBoard chess_board, File file, Rank rank)
  {
    if (is_square_occupied(chess_board,file,rank) == true) {
-     chess_board[file-1][rank-1] = {0};
+     chess_board[rank- 1][file-'a'] = {0};
      return true;
    }
    return false;
