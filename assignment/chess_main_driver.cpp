@@ -10,6 +10,8 @@
  * Some basic movements in chess.
  * ----------------------------------------------------------
  */
+ #ifndef __CHESS_MAIN_DRIVER_CPP
+ #define __CHESS_MAIN_DRIVER_CPP
 #include <stdio.h>
 #include <string.h>
 
@@ -44,3 +46,4 @@ void ui_branch()
 
 	print_chess_board(chess_board);
 }
+#endif

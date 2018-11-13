@@ -10,19 +10,15 @@
  * Implementation of basic chess functions.
  * ----------------------------------------------------------
  */
- #include <stdio.h>
+ #ifndef __CHESS_CPP
+ #define __CHESS_CPP
  #include "math.h"
- #include "general.h"
  #include "chess.h"
 
- int main(int argc, char const *argv[]) {
-
-   return 0;
- }
 
  bool is_square_ok (File file, Rank rank)
  {
-  return (file - 'a' >= 1 && file - 'a' <= 8 && rank >= 1 && rank <= 8 );
+  return (file <= 'h' && file >= 'a' && rank >= 1 && rank <= 8 );
  }
  bool is_move_from_base_line (enum PieceColor color, Rank rank)
  {
@@ -46,7 +42,7 @@
  struct ChessSquare * get_square (ChessBoard chess_board, File file, Rank rank)
  {
    if (is_square_ok(file, rank)) {
-     return &chess_board[file-1][rank-1];
+     return &chess_board[rank- 1][file-'a'];
    }
    return 0;
  }
@@ -127,3 +123,4 @@
   }
   return false;
  }
+#endif
